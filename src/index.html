@@ -8,7 +8,18 @@
   <body>
     <div class="container py-4 px-3 mx-auto">
       <h1>Hello, Bootstrap and Vite!</h1>
-      <button class="btn btn-primary" onclick="handleHello()">Primary button</button>
+
+      <div class="mb-3">
+        <label for="todo-title" class="form-label">Title</label>
+        <input type="email" class="form-control" id="todo-title">
+      </div>
+      <div class="mb-3">
+        <label for="todo-description" class="form-label">Description</label>
+        <textarea type="email" class="form-control" id="todo-description"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="handleCreateTodo()">Add</button>
+      <h1 class="mt-5">Your vip list</h1>
+      <div id="todo-list">
     </div>
     <script type="module" src="./js/main.js"></script>
   </body>
