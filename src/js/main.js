@@ -1,15 +1,11 @@
 // Import our custom CSS
-import '../scss/styles.scss';
-import { createTodo, getTodos, deleteTodo } from './api';
-import * as bootstrap from 'bootstrap';
+import { createTodo, getTodos, deleteTodo } from './helpers/api.js';
+import { isLoggedIn } from './helpers/auth.js';
 
-// Import all of Bootstrap's JS
-
-window.handleHello = () => {
-  axios.get('https://jsonplaceholder.typicode.com/todos/1').then((res) => {
-    console.log(res.data);
-  });
-};
+// If user is not logged in, redirect to login page
+if (!isLoggedIn()){
+  window.location.href = "/login"
+}
 
 const todoList = document.getElementById('todo-list');
 
@@ -42,8 +38,8 @@ const handleCreateTodo = () => {
 
 const handleDeleteTodo = async (id) => {
   await deleteTodo(id);
-  handleGetTodos()
-}
+  handleGetTodos();
+};
 // Fetch all todos and render them to the DOM first time render
 handleGetTodos();
 window.handleCreateTodo = handleCreateTodo;
